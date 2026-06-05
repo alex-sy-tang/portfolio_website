@@ -102,7 +102,7 @@ export default function Home() {
             <div className="flex flex-col items-center gap-6">
               <div className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-white/40 backdrop-blur-md border-4 border-white/60 shadow-2xl shadow-gray-400/40 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1767175473698-859bc73e8e64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw1fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGhlYWRzaG90JTIwYnVzaW5lc3MlMjBwZXJzb24lMjBuZXV0cmFsJTIwYmFja2dyb3VuZHxlbnwxfHx8fDE3ODA0MzgwMDF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                  src="/profile.jpg"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
