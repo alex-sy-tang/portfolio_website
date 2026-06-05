@@ -118,7 +118,7 @@ export default function Home() {
 
         {/* Messages */}
         {messages.length > 0 && (
-          <div className="flex-1 relative z-10">
+          <div className="flex-1 overflow-y-auto min-h-0 relative z-10">
             <div className="max-w-3xl mx-auto pt-8">
               {messages.map((message) => (
                 <ChatMessage key={message.id} role={message.role} content={message.content} />
