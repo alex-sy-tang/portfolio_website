@@ -1,6 +1,8 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
+import { useChat } from '@ai-sdk/react';
+import { TextStreamChatTransport, isTextUIPart } from 'ai';
 import { ChatMessage } from '@/components/chat-message';
 import { ChatInput } from '@/components/chat-input';
 import {
@@ -19,13 +21,6 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
-// ─── Types ──────────────────────────────────────────────────────────────────
-
-interface Message {
-  id: string;
-  role: 'user' | 'assistant';
-  content: string;
-}
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -62,8 +57,10 @@ const projects = [
 // ─── Page ────────────────────────────────────────────────────────────────────
 
 export default function Home() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [isTyping, setIsTyping] = useState(false);
+  const { messages, sendMessage, status } = useChat({
+    transport: new TextStreamChatTransport({ api: '/api/chat' }),
+  });
+  const isTyping = status === 'submitted' || status === 'streaming';
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -72,23 +69,8 @@ export default function Home() {
     }
   }, [messages]);
 
-  // TODO (Week 3): replace this mock handler with the useChat hook from Vercel AI SDK
-  // pointing at POST /api/chat
-  const handleSendMessage = async (content: string) => {
-    const userMessage: Message = { id: Date.now().toString(), role: 'user', content };
-    setMessages((prev) => [...prev, userMessage]);
-    setIsTyping(true);
-
-    setTimeout(() => {
-      const aiMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content:
-          "I'm a demo AI chatbot for this portfolio. In a real application, I would be connected to an AI API to provide intelligent responses about the portfolio owner's skills, experience, and projects.",
-      };
-      setMessages((prev) => [...prev, aiMessage]);
-      setIsTyping(false);
-    }, 1000);
+  const handleSendMessage = (content: string) => {
+    sendMessage({ text: content });
   };
 
   return (
@@ -121,7 +103,11 @@ export default function Home() {
           <div className="flex-1 overflow-y-auto min-h-0 relative z-10">
             <div className="max-w-3xl mx-auto pt-8">
               {messages.map((message) => (
-                <ChatMessage key={message.id} role={message.role} content={message.content} />
+                <ChatMessage
+                  key={message.id}
+                  role={message.role as 'user' | 'assistant'}
+                  content={message.parts.filter(isTextUIPart).map((p) => p.text).join('')}
+                />
               ))}
               {isTyping && (
                 <div className="flex px-4 py-3 justify-start">

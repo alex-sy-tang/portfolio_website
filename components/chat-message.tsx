@@ -1,3 +1,5 @@
+import ReactMarkdown from 'react-markdown';
+
 interface ChatMessageProps {
   role: 'user' | 'assistant';
   content: string;
@@ -13,9 +15,24 @@ export function ChatMessage({ role, content }: ChatMessageProps) {
           {isUser ? 'You' : 'Shengyao'}
         </span>
         <div className="rounded-2xl px-4 py-3 bg-white/30 backdrop-blur-md transition-all duration-300 border border-white/40 shadow-lg shadow-gray-400/20">
-          <p className="m-0 whitespace-pre-wrap break-words text-gray-900 text-sm leading-relaxed">
-            {content}
-          </p>
+          {isUser ? (
+            <p className="m-0 whitespace-pre-wrap break-words text-gray-900 text-sm leading-relaxed">
+              {content}
+            </p>
+          ) : (
+            <ReactMarkdown
+              components={{
+                p: ({ children }) => <p className="m-0 mb-2 last:mb-0 text-gray-900 text-sm leading-relaxed">{children}</p>,
+                strong: ({ children }) => <strong className="font-semibold text-gray-900">{children}</strong>,
+                ul: ({ children }) => <ul className="list-disc list-inside my-1 space-y-0.5 text-sm text-gray-900">{children}</ul>,
+                ol: ({ children }) => <ol className="list-decimal list-inside my-1 space-y-0.5 text-sm text-gray-900">{children}</ol>,
+                li: ({ children }) => <li className="text-gray-900 text-sm leading-relaxed">{children}</li>,
+                code: ({ children }) => <code className="bg-white/50 rounded px-1 py-0.5 text-xs font-mono text-gray-800">{children}</code>,
+              }}
+            >
+              {content}
+            </ReactMarkdown>
+          )}
         </div>
       </div>
     </div>
