@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { TextStreamChatTransport, isTextUIPart } from 'ai';
 import { ChatMessage } from '@/components/chat-message';
@@ -22,37 +22,16 @@ function LinkedInIcon({ className }: { className?: string }) {
 }
 
 
-// ─── Data ────────────────────────────────────────────────────────────────────
+// ─── Types ───────────────────────────────────────────────────────────────────
 
-const projects = [
-  {
-    id: 1,
-    title: 'Machine Learning Stock Picker',
-    description:
-      'Developed an ML-driven stock selection system that predicts S&P 500 stocks capable of outperforming the weekly median return. Optimized LSTM, Neural Network, and SVM models through hyperparameter tuning to achieve a 73% test accuracy, and engineered an automated, real-time equities ETL pipeline utilizing Python, MySQL, and GitHub CI/CD.',
-    tech: ['Python', 'LSTM', 'PyTorch', 'Scikit-learn', 'MySQL', 'Streamlit', 'CI/CD'],
-    github: 'https://github.com/shengyaotang/ml-stock-picker',
-    date: 'May 2025 – Aug 2025',
-  },
-  {
-    id: 2,
-    title: 'Criminal Records Database',
-    description:
-      'Designed a normalized MySQL database for criminal case and lawsuit tracking that optimized data storage and eliminated redundancy. Engineered the system to support seamless, real-time concurrent read and write operations for multiple users.',
-    tech: ['MySQL', 'PHP', 'HTML', 'CSS', 'JavaScript'],
-    github: '',
-    date: 'Aug 2024 – Dec 2024',
-  },
-  {
-    id: 3,
-    title: 'AI for Scientific Research',
-    description:
-      'Led a benchmarking team to improve a satellite image pixel classifier\'s inference accuracy by over 18% using TensorFlow. Enhanced performance interpretability by integrating TensorBoard and log files, and spearheaded cross-functional collaboration by leading meetings with MLCommons.',
-    tech: ['Python', 'TensorFlow', 'TensorBoard', 'Machine Learning'],
-    github: '',
-    date: 'Oct 2022 – Jun 2023',
-  },
-];
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  tech: string[];
+  github: string;
+  date: string;
+};
 
 // ─── Page ────────────────────────────────────────────────────────────────────
 
@@ -61,6 +40,13 @@ export default function Home() {
     transport: new TextStreamChatTransport({ api: '/api/chat' }),
   });
   const isTyping = status === 'submitted' || status === 'streaming';
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    fetch('/api/projects')
+      .then((res) => res.json())
+      .then((data) => setProjects(data));
+  }, []);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -347,7 +333,7 @@ export default function Home() {
 
 // ─── Project Card ─────────────────────────────────────────────────────────────
 
-function ProjectCard({ project }: { project: typeof projects[0] }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="bg-white/30 backdrop-blur-md rounded-2xl p-8 border border-white/40 hover:border-amber-400/60 transition-all duration-300 shadow-xl shadow-gray-400/30 hover:shadow-2xl hover:shadow-amber-400/40">
       <h3 className="text-2xl font-semibold text-gray-900 mb-1">{project.title}</h3>
