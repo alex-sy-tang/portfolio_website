@@ -4,8 +4,15 @@ import { Pinecone } from '@pinecone-database/pinecone'
 
 const VOYAGE_MODEL = 'voyage-2'
 
-const pinecone = new Pinecone({ apiKey: process.env.PINECONE_API_KEY! })
-const index = pinecone.index(process.env.PINECONE_INDEX!)
+let index: ReturnType<Pinecone['index']> | null = null
+
+function getPineconeIndex() {
+  if (!index) {
+    const pinecone = new Pinecone({ apiKey: process.env.PINECONE_API_KEY! })
+    index = pinecone.index(process.env.PINECONE_INDEX!)
+  }
+  return index
+}
 
 async function embedQuery(text: string): Promise<number[]> {
   const response = await fetch('https://api.voyageai.com/v1/embeddings', {
@@ -39,7 +46,7 @@ export async function POST(req: Request) {
     const embedding = await embedQuery(userText)
 
     // 2. Retrieve top 4 relevant chunks from Pinecone
-    const results = await index.query({
+    const results = await getPineconeIndex().query({
       vector: embedding,
       topK: 8,
       includeMetadata: true,
