@@ -3,7 +3,6 @@ dotenv.config({ path: ".env.local" })
 
 import * as fs from "fs"
 import * as path from "path"
-import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters"
 import { Pinecone } from "@pinecone-database/pinecone"
 
 // ── 1. Config ────────────────────────────────────────────────────────────────
@@ -15,12 +14,33 @@ const VOYAGE_API_KEY   = process.env.VOYAGE_API_KEY!
 const KNOWLEDGE_DIR    = path.join(process.cwd(), "knowledge")
 const KNOWLEDGE_FILES  = ["resume", "projects", "bio", "qa", "guardrails"]
 
-const CHUNK_SIZE       = 300
-const CHUNK_OVERLAP    = 50
 const VOYAGE_MODEL     = "voyage-2"
 const EMBED_BATCH_SIZE = 8
 
-// ── 2. Voyage AI embedding function ─────────────────────────────────────────
+// ── 2. Semantic chunking ──────────────────────────────────────────────────────
+
+function chunkDocument(fileName: string, rawText: string): string[] {
+  if (fileName === "qa") {
+    // Split on --- dividers so each chunk is one complete Q&A pair
+    // Keep only chunks that start with **Q — drops the document preamble
+    return rawText.split(/\n---\n/)
+      .map((c) => c.trim())
+      .filter((c) => c.startsWith("**Q"))
+
+  } else if (fileName === "guardrails") {
+    // Short file — keep as a single chunk
+    return [rawText.trim()]
+
+  } else {
+    // resume, projects, bio — split on ## section headers
+    // Keep only chunks that start with ## — drops anything before the first section
+    return rawText.split(/\n(?=## )/)
+      .map((c) => c.trim())
+      .filter((c) => c.startsWith("##"))
+  }
+}
+
+// ── 3. Voyage AI embedding ───────────────────────────────────────────────────
 
 async function embedBatch(texts: string[]): Promise<number[][]> {
   const response = await fetch("https://api.voyageai.com/v1/embeddings", {
@@ -49,25 +69,22 @@ async function embedBatch(texts: string[]): Promise<number[][]> {
     .map((item) => item.embedding)
 }
 
-// ── 3. Main ingestion function ───────────────────────────────────────────────
+// ── 4. Main ingestion function ───────────────────────────────────────────────
 
 async function ingest() {
-  // Validate env vars
   if (!PINECONE_API_KEY || !PINECONE_INDEX || !VOYAGE_API_KEY) {
     throw new Error(
       "Missing environment variables. Make sure PINECONE_API_KEY, PINECONE_INDEX, and VOYAGE_API_KEY are set in .env.local"
     )
   }
 
-  // Connect to Pinecone
   const pinecone = new Pinecone({ apiKey: PINECONE_API_KEY })
   const index    = pinecone.index(PINECONE_INDEX)
 
-  // Set up LangChain text splitter
-  const splitter = new RecursiveCharacterTextSplitter({
-    chunkSize:    CHUNK_SIZE,
-    chunkOverlap: CHUNK_OVERLAP,
-  })
+  // Delete all existing vectors before re-ingesting to avoid stale data
+  console.log("🗑️  Deleting all existing vectors from Pinecone...")
+  await index.deleteAll()
+  console.log("✅ Pinecone index cleared\n")
 
   let totalVectors = 0
 
@@ -75,19 +92,14 @@ async function ingest() {
     const filePath = path.join(KNOWLEDGE_DIR, `${fileName}.md`)
     const rawText  = fs.readFileSync(filePath, "utf-8")
 
-    // Split into chunks using LangChain
-    const docs   = await splitter.createDocuments([rawText])
-    const chunks = docs.map((doc) => doc.pageContent)
+    const chunks = chunkDocument(fileName, rawText)
     console.log(`-> Chunked ${fileName}.md: ${chunks.length} chunks`)
 
-    // Process in batches to avoid hitting API rate limits
+    // Process in batches to avoid API rate limits
     for (let i = 0; i < chunks.length; i += EMBED_BATCH_SIZE) {
-      const batch = chunks.slice(i, i + EMBED_BATCH_SIZE)
-
-      // Embed this batch with Voyage AI
+      const batch      = chunks.slice(i, i + EMBED_BATCH_SIZE)
       const embeddings = await embedBatch(batch)
 
-      // Build Pinecone vector records
       const vectors = batch.map((chunk: string, j: number) => ({
         id:       `${fileName}-chunk-${i + j}`,
         values:   embeddings[j],
@@ -98,7 +110,6 @@ async function ingest() {
         },
       }))
 
-      // Upsert into Pinecone
       await index.upsert({ records: vectors })
       totalVectors += vectors.length
     }
@@ -107,7 +118,7 @@ async function ingest() {
   console.log(`\n✅ Done! Total vectors upserted: ${totalVectors}`)
 }
 
-// ── 4. Run ───────────────────────────────────────────────────────────────────
+// ── 5. Run ───────────────────────────────────────────────────────────────────
 
 ingest().catch((err) => {
   console.error("❌ Ingestion failed:", err)
