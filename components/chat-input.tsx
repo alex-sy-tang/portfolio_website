@@ -36,7 +36,7 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
             placeholder="Ask Me Anything..."
             disabled={disabled}
             rows={1}
-            className="flex-1 resize-none rounded-3xl bg-white/40 backdrop-blur-sm text-gray-900 placeholder-gray-600 px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:bg-white/50 disabled:opacity-50 disabled:cursor-not-allowed max-h-[200px] border border-white/50 shadow-md shadow-gray-300/20"
+            className="flex-1 resize-none rounded-3xl bg-white/40 dark:bg-white/10 backdrop-blur-sm text-gray-900 dark:text-gray-100 placeholder-gray-600 dark:placeholder-gray-400 px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-amber-500/50 dark:focus:ring-cyan-500/50 focus:bg-white/50 dark:focus:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed max-h-[200px] border border-white/50 dark:border-white/20 shadow-md shadow-gray-300/20"
             style={{ minHeight: '52px', height: 'auto', overflow: 'auto' }}
           />
           <button
