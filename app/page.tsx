@@ -138,7 +138,7 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
           <div className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl p-10 border border-white/40 dark:border-white/20 shadow-2xl shadow-gray-400/30">
             <div className="space-y-4">
               <p className="text-gray-800 dark:text-gray-300 leading-relaxed text-lg">
@@ -166,7 +166,7 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-8">Experience</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">Experience</h2>
           <div className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/40 dark:border-white/20 shadow-2xl shadow-gray-400/30">
             <div className="space-y-8">
               <div className="border-l-2 border-amber-600 dark:border-cyan-400 pl-6">
@@ -214,7 +214,7 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-8">Education</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">Education</h2>
           <div className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/40 dark:border-white/20 shadow-2xl shadow-gray-400/30">
             <div className="space-y-8">
               <div className="border-l-2 border-amber-600 dark:border-cyan-400 pl-6">
@@ -249,9 +249,9 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-8">Skills</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">Skills</h2>
           <div className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/40 dark:border-white/20 shadow-2xl shadow-gray-400/30">
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 { icon: FileCode, color: 'text-amber-700 dark:text-cyan-400',  label: 'Programming Languages', value: 'Python, C++, MATLAB, TypeScript, JavaScript, HTML, CSS' },
                 { icon: Brain,    color: 'text-orange-700 dark:text-teal-400', label: 'ML & Data Science',    value: 'Pandas, PySpark, NumPy, Scikit-learn, PyTorch, TensorFlow' },
@@ -282,8 +282,8 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">Projects</h1>
-          <p className="text-2xl text-gray-700 dark:text-gray-400 dark:text-gray-400 mb-12">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Projects</h1>
+          <p className="text-lg md:text-2xl text-gray-700 dark:text-gray-400 dark:text-gray-400 mb-12">
             A showcase of my work in machine learning, finance, and software development
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -306,8 +306,8 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h1>
-            <p className="text-2xl text-gray-700 dark:text-gray-400">Let&apos;s connect!</p>
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h1>
+            <p className="text-lg md:text-2xl text-gray-700 dark:text-gray-400">Let&apos;s connect!</p>
           </div>
           <div className="grid md:grid-cols-2 gap-10">
             {/* Contact info cards */}

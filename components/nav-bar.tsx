@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Home, User, Briefcase, GraduationCap, Code, FolderGit2, Mail, Sun, Moon } from 'lucide-react';
+import { Home, User, Briefcase, GraduationCap, Code, FolderGit2, Mail, Sun, Moon, Menu, X } from 'lucide-react';
 
 const navItems = [
   { label: 'Home',       icon: Home,          sectionId: 'chat'       },
@@ -16,6 +16,7 @@ const navItems = [
 export function NavBar() {
   const [isOnHomeSection, setIsOnHomeSection] = useState(true);
   const [isDark, setIsDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('theme');
@@ -57,6 +58,7 @@ export function NavBar() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    setMenuOpen(false);
   };
 
   return (
@@ -72,7 +74,8 @@ export function NavBar() {
           <h1 className="text-sm font-semibold text-gray-900 dark:text-white">Shengyao Tang</h1>
         </div>
 
-        <div className="flex items-center gap-1">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-1">
           {navItems.map(({ label, icon: Icon, sectionId }) => (
             <button
               key={sectionId}
@@ -91,7 +94,41 @@ export function NavBar() {
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
         </div>
+
+        {/* Mobile controls */}
+        <div className="flex md:hidden items-center gap-2">
+          <button
+            onClick={toggleDark}
+            className="p-1.5 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            className="p-1.5 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile dropdown menu */}
+      {menuOpen && (
+        <div className={`md:hidden border-t ${isOnHomeSection ? 'bg-white/80 border-white/30 dark:bg-black/80 dark:border-white/10' : 'bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700'} backdrop-blur-md`}>
+          {navItems.map(({ label, icon: Icon, sectionId }) => (
+            <button
+              key={sectionId}
+              onClick={() => handleNavClick(sectionId)}
+              className="flex items-center gap-3 w-full px-6 py-3 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-sm"
+            >
+              <Icon className="w-4 h-4" />
+              <span>{label}</span>
+            </button>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
