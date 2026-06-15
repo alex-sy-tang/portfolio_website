@@ -17,12 +17,12 @@ export default function RootLayout({
       <body
         className="relative"
         style={{
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1557682260-96773eb01377?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXJtJTIwb3JhbmdlJTIweWVsbG93JTIwZ3JhZGllbnQlMjBtaW5pbWFsaXN0JTIwYWJzdHJhY3R8ZW58MXx8fHwxNzgwNDM3NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080)',
+          backgroundImage: 'url(/background.jpg)',
+            // 'url(https://images.unsplash.com/photo-1557682260-96773eb01377?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXJtJTIwb3JhbmdlJTIweWVsbG93JTIwZ3JhZGllbnQlMjBtaW5pbWFsaXN0JTIwYWJzdHJhY3R8ZW58MXx8fHwxNzgwNDM3NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed',
+          // backgroundAttachment: 'fixed',
         }}
       >
         {/* Soft white overlay */}
