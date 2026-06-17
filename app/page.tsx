@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useChat } from '@ai-sdk/react';
 import { TextStreamChatTransport, isTextUIPart } from 'ai';
 import { ChatMessage } from '@/components/chat-message';
@@ -58,6 +58,28 @@ export default function Home() {
 
   const handleSendMessage = (content: string) => {
     sendMessage({ text: content });
+  };
+
+  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
+  const [contactStatus, setContactStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setContactStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contactForm),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setContactStatus('success');
+      setContactForm({ name: '', email: '', message: '' });
+      setTimeout(() => setContactStatus('idle'), 5000);
+    } catch {
+      setContactStatus('error');
+      setTimeout(() => setContactStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -354,22 +376,70 @@ export default function Home() {
             {/* Contact form */}
             <div className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/40 dark:border-white/20 shadow-2xl shadow-gray-400/30">
               <h3 className="text-3xl font-semibold text-gray-900 dark:text-white mb-8">Send a Message</h3>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleContactSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                  <input type="text" id="name" className="w-full px-4 py-3 bg-white/40 border border-white/50 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-500 focus:border-transparent backdrop-blur-sm" placeholder="Your name" />
+                  <input
+                    type="text" id="name" required
+                    value={contactForm.name}
+                    onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                    className="w-full px-4 py-3 bg-white/40 border border-white/50 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-500 focus:border-transparent backdrop-blur-sm"
+                    placeholder="Your name"
+                  />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                  <input type="email" id="email" className="w-full px-4 py-3 bg-white/40 border border-white/50 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-500 focus:border-transparent backdrop-blur-sm" placeholder="your.email@example.com" />
+                  <input
+                    type="email" id="email" required
+                    value={contactForm.email}
+                    onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                    className="w-full px-4 py-3 bg-white/40 border border-white/50 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-500 focus:border-transparent backdrop-blur-sm"
+                    placeholder="your.email@example.com"
+                  />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                  <textarea id="message" rows={5} className="w-full px-4 py-3 bg-white/40 border border-white/50 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-500 focus:border-transparent resize-none backdrop-blur-sm" placeholder="Your message..." />
+                  <textarea
+                    id="message" rows={5} required
+                    value={contactForm.message}
+                    onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                    className="w-full px-4 py-3 bg-white/40 border border-white/50 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-cyan-500 focus:border-transparent resize-none backdrop-blur-sm"
+                    placeholder="Your message..."
+                  />
                 </div>
-                <button type="submit" className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-amber-600 hover:bg-amber-700 dark:bg-cyan-600 dark:hover:bg-cyan-700 text-white rounded-xl transition-all duration-300 font-medium shadow-lg shadow-amber-500/30 dark:shadow-cyan-500/30">
+                <AnimatePresence>
+                  {contactStatus === 'success' && (
+                    <motion.p
+                      key="success"
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.4 }}
+                      className="text-sm text-green-700 dark:text-green-400 bg-green-100/60 dark:bg-green-900/30 rounded-xl px-4 py-3 text-center"
+                    >
+                      Message sent! I will get back to you soon.
+                    </motion.p>
+                  )}
+                  {contactStatus === 'error' && (
+                    <motion.p
+                      key="error"
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.4 }}
+                      className="text-sm text-red-700 dark:text-red-400 bg-red-100/60 dark:bg-red-900/30 rounded-xl px-4 py-3 text-center"
+                    >
+                      Failed to send message. Please try again.
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+                <button
+                  type="submit"
+                  disabled={contactStatus === 'sending'}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-amber-600 hover:bg-amber-700 dark:bg-cyan-600 dark:hover:bg-cyan-700 disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-xl transition-all duration-300 font-medium shadow-lg shadow-amber-500/30 dark:shadow-cyan-500/30"
+                >
                   <Send className="w-5 h-5" />
-                  Send Message
+                  {contactStatus === 'sending' ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
