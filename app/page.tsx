@@ -37,7 +37,7 @@ type Project = {
 // ─── Page ────────────────────────────────────────────────────────────────────
 
 export default function Home() {
-  const { messages, sendMessage, status } = useChat({
+  const { messages, sendMessage, status, error } = useChat({
     transport: new TextStreamChatTransport({ api: '/api/chat' }),
   });
   const isTyping = status === 'submitted' || status === 'streaming';
@@ -117,6 +117,19 @@ export default function Home() {
                 </div>
               )}
               <div ref={messagesEndRef} />
+            </div>
+          </div>
+        )}
+
+        {/* Rate limit / error banner */}
+        {error && (
+          <div className="flex-shrink-0 px-4 pb-2 relative z-10">
+            <div className="max-w-3xl mx-auto">
+              <p className="text-center text-sm text-red-700 dark:text-red-400 bg-red-100/60 dark:bg-red-900/30 backdrop-blur-sm rounded-xl px-4 py-2 border border-red-300/50 dark:border-red-500/40">
+                {error.message.includes('429') || error.message.toLowerCase().includes('too many')
+                  ? 'To keep this chatbot free, requests are rate limited. Please wait a moment before trying again.'
+                  : 'Something went wrong. Please try again.'}
+              </p>
             </div>
           </div>
         )}
