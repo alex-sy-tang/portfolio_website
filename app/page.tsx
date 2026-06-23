@@ -205,8 +205,9 @@ export default function Home() {
           <div className="bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/40 dark:border-white/20 shadow-2xl shadow-gray-400/30">
             <div className="space-y-8">
               <div className="border-l-2 border-amber-600 dark:border-cyan-400 pl-6">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">AI Developer</h3>
-                <p className="text-gray-900 dark:text-gray-200 mb-3 text-lg">Infrastructure Masons • Feb 2026 - Present</p>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Infrastructure Masons</h3>
+                <p className="text-gray-900 dark:text-gray-200 text-lg">Feb 2026 – May 2026</p>
+                <p className="text-gray-700 dark:text-gray-400 italic mb-3">AI Engineer Intern</p>
                 <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 text-base">
                   <li>Engineered a persona AI chatbot by finetuning Qwen 2.5 with LoRA to provide expert knowledge on digital infrastructure</li>
                   <li>Collaborated with a team of 9 people to deliver the project demo, presenting at DCD Connect | New York</li>
@@ -215,8 +216,9 @@ export default function Home() {
                 </ul>
               </div>
               <div className="border-l-2 border-orange-600 dark:border-teal-400 pl-6">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Financial Data Analyst</h3>
-                <p className="text-gray-900 dark:text-gray-200 mb-3 text-lg">China Baowu Steel Group • Jun 2025 - Aug 2025</p>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">China Baowu Steel Group</h3>
+                <p className="text-gray-900 dark:text-gray-200 text-lg">Jun 2025 – Aug 2025</p>
+                <p className="text-gray-700 dark:text-gray-400 italic mb-3">Financial Data Analyst Intern</p>
                 <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 text-base">
                   <li>Developed a SARIMAX model to forecast monthly corporate deposit with 12.56% MAD, enhancing liquidity management</li>
                   <li>Identified &quot;planned investment&quot; as an exogenous variable through hypothesis test, reducing MAD from 18.03% to 12.56%</li>
@@ -225,8 +227,9 @@ export default function Home() {
                 </ul>
               </div>
               <div className="border-l-2 border-yellow-700 dark:border-cyan-500 pl-6">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Private Wealth Management Analyst</h3>
-                <p className="text-gray-900 dark:text-gray-200 mb-3 text-lg">Guosheng Securities • Jun 2024 - Aug 2024</p>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Guosheng Securities</h3>
+                <p className="text-gray-900 dark:text-gray-200 text-lg">Jun 2024 – Aug 2024</p>
+                <p className="text-gray-700 dark:text-gray-400 italic mb-3">Private Wealth Management Analyst Intern</p>
                 <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 text-base">
                   <li>Authored and distributed daily newsletter, analyzing trends, performance, and developments in Chinese and U.S. markets</li>
                   <li>Researched fixed income products and recommended a product to a client, securing a ¥100k+ investment for the fund</li>
