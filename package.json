@@ -8,9 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^3.0.83",
+    "@ai-sdk/google": "^2.0.0",
     "@ai-sdk/react": "^3.0.204",
-    "@anthropic-ai/sdk": "^0.100.1",
     "@langchain/core": "^1.1.48",
     "@langchain/textsplitters": "^1.0.1",
     "@pinecone-database/pinecone": "^7.2.0",

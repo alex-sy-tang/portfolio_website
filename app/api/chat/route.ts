@@ -1,5 +1,5 @@
 import { streamText, convertToModelMessages, isTextUIPart, type UIMessage } from 'ai'
-import { anthropic } from '@ai-sdk/anthropic'
+import { google } from '@ai-sdk/google'
 import { Pinecone } from '@pinecone-database/pinecone'
 
 const VOYAGE_MODEL = 'voyage-2'
@@ -70,7 +70,7 @@ ${context}`
 
     // 4. Stream response back to the browser
     const result = streamText({
-      model: anthropic('claude-sonnet-4-6'),
+      model: google('gemini-3.5-flash'),
       system: systemPrompt,
       messages: await convertToModelMessages(messages),
     })
