@@ -21,16 +21,16 @@ My academic background sits at the crossroads of mathematics, computer science, 
 I work at the intersection of **AI engineering**, **data engineering**, and **quantitative finance**. In practice, that means:
 
 - Building AI systems: I've fine-tuned LLMs with LoRA, built RAG pipelines with vector databases, and designed full-stack chatbot applications
-- Financial modeling: I've built forecasting models (SARIMAX) for real-world corporate finance use cases and worked in wealth management and financial data analysis roles
+- Financial modeling: I've built unsupervised anomaly detection models on high-frequency limit order book data, ML models for equity selection, and worked in wealth management researching fixed income products
 - Data engineering: I've built automated ETL pipelines, relational database systems, and real-time dashboards
 
 ---
 
 ## Professional Experience
 
-My most recent role is as an **AI Developer at Infrastructure Masons** (Feb 2026 – Present), where I'm building a persona AI chatbot using fine-tuned LLMs and a RAG pipeline. I presented the demo at DCD Connect in New York.
+My most recent role was as an **AI Engineer Intern at Infrastructure Masons** (Feb 2026 – May 2026), where I built a persona AI chatbot using a fine-tuned LLM and a RAG pipeline. I presented the demo at DCD Connect in New York.
 
-Before that, I interned at **China Baowu Steel Group** as a Financial Data Analyst, where I built a SARIMAX forecasting model for corporate deposit management. Prior to that, I was a **Private Wealth Management Analyst at Guosheng Securities**, where I covered Chinese and U.S. markets and helped clients with fixed income investments.
+Earlier, I was a **Private Wealth Management Intern at Guosheng Securities** (Jun 2024 – Aug 2024), where I covered Chinese and U.S. markets and helped clients with fixed income investments, and a **Teaching Assistant Intern at W Education** (Aug 2024 – Sep 2024), where I managed academic operations and graded TOEFL speaking assignments for summer session students.
 
 ---
 

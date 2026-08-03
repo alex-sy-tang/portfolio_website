@@ -16,7 +16,7 @@ export async function GET() {
     },
     {
       category: 'AI & Cloud',
-      items: ['Pinecone', 'Together AI', 'LoRA fine-tuning', 'RAG pipelines', 'Qwen 2.5'],
+      items: ['Pinecone', 'Together AI', 'LoRA fine-tuning', 'RAG pipelines', 'Qwen 3.5'],
     },
     {
       category: 'Languages',

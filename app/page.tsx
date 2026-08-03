@@ -209,31 +209,29 @@ export default function Home() {
                 <p className="text-gray-900 dark:text-gray-200 text-lg">Feb 2026 – May 2026</p>
                 <p className="text-gray-700 dark:text-gray-400 italic mb-3">AI Engineer Intern</p>
                 <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 text-base">
-                  <li>Engineered a persona AI chatbot by finetuning Qwen 2.5 with LoRA to provide expert knowledge on digital infrastructure</li>
-                  <li>Collaborated with a team of 9 people to deliver the project demo, presenting at DCD Connect | New York</li>
+                  <li>Engineered a persona AI chatbot by finetuning Qwen 3.5 with LoRA to provide expert knowledge on digital infrastructure</li>
                   <li>Architected a RAG pipeline using Pinecone and Together AI, using k-nearest neighbor retrieval to reduce hallucinations</li>
-                  <li>Designed a frontend using TypeScript, featuring real-time Q&A, chat history storage, and customizable persona configurations</li>
+                  <li>Designed a TypeScript frontend, featuring real-time Q&A, chat history storage, and customizable persona configurations</li>
+                  <li>Collaborated with a team of 9 people to deliver the project demo, presenting the demo at DCD Connect | New York</li>
                 </ul>
               </div>
               <div className="border-l-2 border-orange-600 dark:border-teal-400 pl-6">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">China Baowu Steel Group</h3>
-                <p className="text-gray-900 dark:text-gray-200 text-lg">Jun 2025 – Aug 2025</p>
-                <p className="text-gray-700 dark:text-gray-400 italic mb-3">Financial Data Analyst Intern</p>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Guosheng Securities</h3>
+                <p className="text-gray-900 dark:text-gray-200 text-lg">Jun 2024 – Aug 2024</p>
+                <p className="text-gray-700 dark:text-gray-400 italic mb-3">Private Wealth Management Intern</p>
                 <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 text-base">
-                  <li>Developed a SARIMAX model to forecast monthly corporate deposit with 12.56% MAD, enhancing liquidity management</li>
-                  <li>Identified &quot;planned investment&quot; as an exogenous variable through hypothesis test, reducing MAD from 18.03% to 12.56%</li>
-                  <li>Built an end-to-end data analysis pipeline encompassing preprocessing, stationarity tests, and residual diagnostics</li>
-                  <li>Delivered monthly forecast reports to stakeholders, informing strategic decisions for the corporate deposit portfolio</li>
+                  <li>Authored and distributed daily newsletters, analyzing trends, performance, and developments in Chinese and U.S. markets</li>
+                  <li>Researched fixed income products and recommended a product to a client, helping to secure a ¥100k+ investment</li>
+                  <li>Guided elderly clients to open trading accounts, ensuring compliance with regulatory and risk management requirements</li>
                 </ul>
               </div>
               <div className="border-l-2 border-yellow-700 dark:border-cyan-500 pl-6">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Guosheng Securities</h3>
-                <p className="text-gray-900 dark:text-gray-200 text-lg">Jun 2024 – Aug 2024</p>
-                <p className="text-gray-700 dark:text-gray-400 italic mb-3">Private Wealth Management Analyst Intern</p>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">W Education</h3>
+                <p className="text-gray-900 dark:text-gray-200 text-lg">Aug 2024 – Sep 2024</p>
+                <p className="text-gray-700 dark:text-gray-400 italic mb-3">Teaching Assistant Intern</p>
                 <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 text-base">
-                  <li>Authored and distributed daily newsletter, analyzing trends, performance, and developments in Chinese and U.S. markets</li>
-                  <li>Researched fixed income products and recommended a product to a client, securing a ¥100k+ investment for the fund</li>
-                  <li>Guided elderly clients to open trading accounts, ensuring compliance with regulatory and risk management requirements</li>
+                  <li>Managed daily academic operations across 2 summer session classes, tracking homework completion, and delivering timely feedback to instructors each morning</li>
+                  <li>Graded and provided feedback on students&apos; TOEFL speaking assignments, assessing fluency, pronunciation, and coherence to support exam readiness</li>
                 </ul>
               </div>
             </div>

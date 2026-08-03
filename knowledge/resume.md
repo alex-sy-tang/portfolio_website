@@ -11,25 +11,23 @@
 
 ## Work Experience
 
-### Infrastructure Masons — AI Developer
-**Feb 2026 – Present | New York, NY**
-- Engineered a persona AI chatbot by fine-tuning Qwen 2.5 with LoRA to provide expert knowledge on digital infrastructure
-- Collaborated with a team of 9 people to deliver the project demo, presenting at DCD Connect | New York
+### Infrastructure Masons — AI Engineer Intern
+**Feb 2026 – May 2026 | New York, NY**
+- Engineered a persona AI chatbot by fine-tuning Qwen 3.5 with LoRA to provide expert knowledge on digital infrastructure
 - Architected a RAG pipeline using Pinecone and Together AI, using k-nearest neighbor retrieval to reduce hallucinations
 - Designed a frontend using TypeScript, featuring real-time Q&A, chat history storage, and customizable persona configurations
+- Collaborated with a team of 9 people to deliver the project demo, presenting the demo at DCD Connect | New York
 
-### China Baowu Steel Group — Financial Data Analyst
-**Jun 2025 – Aug 2025 | Shanghai, China**
-- Developed a SARIMAX model to forecast monthly corporate deposit with 12.56% MAD, enhancing liquidity management
-- Identified "planned investment" as an exogenous variable through hypothesis testing, reducing MAD from 18.03% to 12.56%
-- Built an end-to-end data analysis pipeline encompassing preprocessing, stationarity tests, and residual diagnostics
-- Delivered monthly forecast reports to stakeholders, informing strategic decisions for the corporate deposit portfolio
-
-### Guosheng Securities — Private Wealth Management Analyst
+### Guosheng Securities — Private Wealth Management Intern
 **Jun 2024 – Aug 2024 | Shanghai, China**
-- Authored and distributed daily newsletter analyzing trends, performance, and developments in Chinese and U.S. markets
-- Researched fixed income products and recommended a product to a client, securing a ¥100k+ investment for the fund
+- Authored and distributed daily newsletters, analyzing trends, performance, and developments in Chinese and U.S. markets
+- Researched fixed income products and recommended a product to a client, helping to secure a ¥100k+ investment
 - Guided elderly clients to open trading accounts, ensuring compliance with regulatory and risk management requirements
+
+### W Education — Teaching Assistant Intern
+**Aug 2024 – Sep 2024 | Shanghai, China**
+- Managed daily academic operations across 2 summer session classes, tracking homework completion, and delivering timely feedback to instructors each morning
+- Graded and provided feedback on students' TOEFL speaking assignments, assessing fluency, pronunciation, and coherence to support exam readiness
 
 ---
 
@@ -43,7 +41,7 @@
 
 **AI & Cloud:** Claude API, Pinecone (vector DB), Together AI, LoRA fine-tuning, RAG pipelines
 
-**Other Tools:** Streamlit, PHP, Qwen 2.5
+**Other Tools:** Streamlit, PHP, Qwen 3.5
 
 ---
 

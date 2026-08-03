@@ -2,23 +2,34 @@
 
 ---
 
-## Infrastructure Masons — Persona AI Chatbot
-**Feb 2026 – Present | AI Developer | New York, NY**
+## High Frequency Trading LOB Anomaly Detection
+**Jan 2026 – May 2026 | Machine Learning Engineer | New York, NY**
 
-At Infrastructure Masons, I'm building a production-grade persona AI chatbot designed to serve as a domain expert on digital infrastructure topics. The core of the system is a fine-tuned Qwen 2.5 model, which I adapted using LoRA (Low-Rank Adaptation) to specialize its knowledge for the organization's specific use case. LoRA lets you fine-tune a large language model efficiently by only training a small set of additional parameters rather than the entire model, which made this feasible without massive compute resources.
+This project was an unsupervised market manipulation detector built on 1.8 million tick-level limit order book (LOB) events across 5 US equities, targeting behaviors like spoofing, layering, and pump-and-dump schemes that don't come with labeled data in the real world — which is what made an unsupervised approach necessary.
+
+I developed and benchmarked 6 model families across 4 iterative research stages, starting from a baseline Isolation Forest and evolving to an Extended Isolation Forest and a PyTorch LSTM Autoencoder, improving AUC-ROC from 0.922 to 0.959 — 8 points above the in-class Kaggle competition baseline of 0.88. To combine models into a final ensemble without just adding redundant noise, I applied Spearman rank correlation across all 6 model families to quantify how differently they were flagging anomalies, excluding candidate pairs with redundant signal (ρ > 0.85) and retaining the EIF-LSTM ensemble at ρ = 0.56 — in the diversity sweet spot. On the feature side, I engineered 101 features across 10/50/200-tick rolling windows to capture order flow imbalance, cancellation patterns, and other microstructure signals relevant to manipulation detection.
+
+**Tech Stack:** Python, PyTorch, Isolation Forest, Extended Isolation Forest, LSTM Autoencoder, Spearman rank correlation, feature engineering, limit order book data
+
+---
+
+## Infrastructure Masons — Persona AI Chatbot
+**Feb 2026 – May 2026 | AI Engineer Intern | New York, NY**
+
+At Infrastructure Masons, I built a production-grade persona AI chatbot designed to serve as a domain expert on digital infrastructure topics. The core of the system is a fine-tuned Qwen 3.5 model, which I adapted using LoRA (Low-Rank Adaptation) to specialize its knowledge for the organization's specific use case. LoRA lets you fine-tune a large language model efficiently by only training a small set of additional parameters rather than the entire model, which made this feasible without massive compute resources.
 
 On the retrieval side, I architected a full RAG (Retrieval-Augmented Generation) pipeline using Pinecone as the vector database and Together AI for inference. The system uses k-nearest neighbor retrieval to find the most relevant documents before generating a response, which significantly reduces hallucinations and keeps answers grounded in real content. For the frontend, I built the interface in TypeScript with real-time streaming Q&A, persistent chat history, and customizable persona configuration options.
 
 The project culminated in a live demo at DCD Connect in New York — a major data center industry conference — where I presented alongside a 9-person team.
 
-**Tech Stack:** Qwen 2.5, LoRA fine-tuning, Pinecone, Together AI, TypeScript, RAG pipeline, KNN retrieval
+**Tech Stack:** Qwen 3.5, LoRA fine-tuning, Pinecone, Together AI, TypeScript, RAG pipeline, KNN retrieval
 
 ---
 
 ## Machine Learning Stock Picker
 **May 2025 – Aug 2025 | Data Engineer | New York, NY**
 
-This project was an end-to-end machine learning system designed to identify S&P 500 stocks likely to outperform the weekly median cross-sectional return — essentially, a weekly stock-picking engine driven entirely by data and models.
+This project was an end-to-end machine learning system designed to identify DJIA stocks likely to outperform the weekly median cross-sectional return — essentially, a weekly stock-picking engine driven entirely by data and models.
 
 I trained and optimized three different model architectures: an LSTM (Long Short-Term Memory network, well suited for sequential price data), a standard Neural Network, and an SVM (Support Vector Machine). Through hyperparameter tuning using Scikit-learn and PyTorch, the best model achieved a test accuracy of 73% on the weekly directional prediction task.
 
@@ -40,10 +51,10 @@ The database design work involved creating a normalized schema in MySQL — care
 ---
 
 ## AI for Scientific Research — Satellite Image Classifier Benchmark
-**Oct 2022 – Jun 2023 | Benchmarking Team Lead | New York, NY**
+**Oct 2022 – Jun 2023 | Benchmarking Team Coordinator | New York, NY**
 
-This was a research project in collaboration with ML Commons, focused on improving an open-source benchmark for satellite image pixel classification. I led the benchmarking team and was responsible for both the technical improvements and the coordination between our team and the ML Commons organization.
+This was a research project focused on improving an open-source benchmark for satellite image pixel classification, where I coordinated the benchmarking team's technical work.
 
-On the technical side, I improved the inference accuracy of the satellite image pixel classifier benchmark by more than 18% using TensorFlow — a meaningful gain in a domain where incremental improvements are hard to come by. I also incorporated TensorBoard and structured log files into the benchmark to make the results more interpretable and reproducible for other researchers. Beyond the code, I ran regular meetings between our team and ML Commons to keep communication clear on technical issues and research direction.
+I improved the inference accuracy of the satellite image pixel classifier benchmark by more than 18% using TensorFlow — a meaningful gain in a domain where incremental improvements are hard to come by. I also incorporated TensorBoard and structured log files into the benchmark to make the results more interpretable and reproducible for other researchers.
 
 **Tech Stack:** TensorFlow, TensorBoard, Python, satellite imagery, pixel classification
