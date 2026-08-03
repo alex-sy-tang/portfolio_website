@@ -18,7 +18,7 @@ export async function GET() {
         degree: 'B.S. Mathematics',
         school: 'New York University',
         period: 'Sep 2022 – May 2026',
-        gpa: '3.74 / 4.0',
+        gpa: '3.6 / 4.0',
         courses: [
           'Linear Algebra',
           'Applied Statistics',

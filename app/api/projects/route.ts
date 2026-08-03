@@ -13,10 +13,10 @@ export async function GET() {
     },
     {
       id: 2,
-      title: 'Machine Learning Stock Picker',
+      title: 'Equity Return-Prediction & Ranking System',
       description:
-        'Developed an ML-driven stock selection system that predicts DJIA stocks capable of outperforming the weekly median cross-sectional return. Optimized LSTM, Neural Network, and SVM models through hyperparameter tuning to achieve a 73% test accuracy, and engineered an automated, real-time equities ETL pipeline utilizing Python, MySQL, and GitHub CI/CD.',
-      tech: ['Python', 'LSTM', 'PyTorch', 'Scikit-learn', 'MySQL', 'Streamlit', 'CI/CD'],
+        'Developed a continuous return-prediction and cross-sectional ranking model spanning the full S&P 500, benchmarking Ridge, ElasticNet, and Random Forest regressors via Spearman Information Coefficient and combining them through IC-weighted ensembling to outperform every individual model out-of-sample. Built a long-only portfolio construction pipeline with a leakage-free walk-forward backtest achieving a 3.7 Sharpe ratio and 63% cumulative return, plus a GitHub Actions CI/CD workflow for daily retraining and a Streamlit dashboard tracking Sharpe, Sortino, CAGR, and drawdown against SPY.',
+      tech: ['Python', 'Ridge Regression', 'ElasticNet', 'Random Forest', 'Scikit-learn', 'Streamlit', 'GitHub Actions', 'Backtesting'],
       github: 'https://github.com/alex-sy-tang/ML_Portfolio',
       date: 'May 2025 – Aug 2025',
     },

@@ -264,7 +264,7 @@ export default function Home() {
               <div className="border-l-2 border-orange-600 dark:border-teal-400 pl-6">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">B.S. Mathematics</h3>
                 <p className="text-gray-900 dark:text-gray-200 mb-2 text-lg">New York University • Sep 2022 - May 2026</p>
-                <p className="text-gray-700 dark:text-gray-400 mb-3">Cumulative GPA: 3.74/4.0</p>
+                <p className="text-gray-700 dark:text-gray-400 mb-3">Cumulative GPA: 3.6/4.0</p>
                 <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                   <strong>Relevant Courses:</strong> Linear Algebra, Applied Statistics, Probability, Object Oriented Programming, Math Modeling, Data Structures and Algorithms, Introduction to Database, Introduction to Machine Learning
                 </p>

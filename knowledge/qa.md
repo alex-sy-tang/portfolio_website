@@ -1,6 +1,6 @@
 # Shengyao Tang — Anticipated Q&A Pairs
 
-This document contains 25 anticipated questions a visitor might ask the portfolio chatbot, along with ideal answers grounded in Shengyao's background.
+This document contains 33 anticipated questions a visitor might ask the portfolio chatbot, along with ideal answers grounded in Shengyao's background.
 
 ---
 
@@ -25,7 +25,7 @@ A: I'm most proficient in Python. I also work with TypeScript, JavaScript, C++, 
 ---
 
 **Q5: What machine learning frameworks have you used?**
-A: I've used PyTorch extensively for deep learning (LSTM, Neural Networks, Transformer, autoencoder), Scikit-learn for classical ML (SVM, hyperparameter tuning), and TensorFlow for a satellite image benchmarking project. I also have experience with LoRA fine-tuning for LLMs.
+A: I've used PyTorch extensively for deep learning (LSTM, Neural Networks, Transformer, autoencoder), Scikit-learn for classical ML (Ridge, ElasticNet, Random Forest, hyperparameter tuning), and TensorFlow for a satellite image benchmarking project. I also have experience with LoRA fine-tuning for LLMs.
 
 ---
 
@@ -40,12 +40,12 @@ A: RAG stands for Retrieval-Augmented Generation — it's a technique where an A
 ---
 
 **Q8: What projects are you most proud of?**
-A: I'm most proud of three projects. The High Frequency Trading LOB Anomaly Detection project pushed me the furthest technically — benchmarking 6 model families, rigorously selecting for ensemble diversity with Spearman rank correlation, and landing 8 points above the class Kaggle baseline. The AI chatbot I built at Infrastructure Masons — fine-tuning an LLM with LoRA and building a full RAG pipeline — was also technically challenging, and I got to demo it publicly at DCD Connect. The Machine Learning Stock Picker rounds it out, with a 73% test accuracy and a fully automated real-time ETL pipeline that felt like a complete, production-quality system.
+A: I'm most proud of three projects. The High Frequency Trading LOB Anomaly Detection project pushed me the furthest technically — benchmarking 6 model families, rigorously selecting for ensemble diversity with Spearman rank correlation, and landing 8 points above the class Kaggle baseline. The AI chatbot I built at Infrastructure Masons — fine-tuning an LLM with LoRA and building a full RAG pipeline — was also technically challenging, and I got to demo it publicly at DCD Connect. The Equity Return-Prediction & Ranking System rounds it out — a full research-to-production loop with a 3.7 Sharpe ratio backtest, daily automated retraining, and a live performance dashboard.
 
 ---
 
-**Q9: Tell me about the Machine Learning Stock Picker project.**
-A: This was a project where I built an ML system to identify DJIA stocks likely to outperform the weekly median cross-sectional return. I trained and tuned three models — LSTM, Neural Network, and SVM — achieving 73% test accuracy. I also built an automated ETL pipeline using Python, MySQL, and GitHub CI/CD to ingest real-time price data, and a Streamlit dashboard showing 17 technical indicators like RSI and volatility in real time.
+**Q9: Tell me about the Equity Return-Prediction & Ranking System project.**
+A: This was a project where I built a continuous return-prediction and cross-sectional ranking model spanning the full S&P 500. I benchmarked Ridge, ElasticNet, and Random Forest regressors using Spearman Information Coefficient and decile-spread analysis, then combined them via IC-weighted ensembling, which outperformed every individual model out-of-sample. I built a long-only portfolio construction pipeline with a leakage-free walk-forward backtest, achieving a 3.7 Sharpe ratio and 63% cumulative return, plus a GitHub Actions workflow for daily automated retraining and a Streamlit dashboard tracking Sharpe, Sortino, CAGR, and drawdown against SPY.
 
 ---
 
@@ -55,12 +55,12 @@ A: At Guosheng Securities (Summer 2024), I interned as a Private Wealth Manageme
 ---
 
 **Q11: Do you have experience with databases?**
-A: Yes. I've worked extensively with MySQL — both in the Criminal Records Database project (where I designed normalized schemas and integrated with a PHP backend) and in the ML Stock Picker (where I built an automated ETL pipeline using MySQL for real-time equity data). I've also used Pinecone as a vector database for RAG pipelines.
+A: Yes. I've worked extensively with MySQL in the Criminal Records Database project, where I designed normalized schemas and integrated them with a PHP backend for concurrent multi-user access. I've also used Pinecone as a vector database for RAG pipelines.
 
 ---
 
 **Q12: What is your experience with financial modeling?**
-A: My main financial modeling work is the High Frequency Trading LOB Anomaly Detection project, where I built an unsupervised market manipulation detector on 1.8M tick-level limit order book events, benchmarking 6 model families — from Isolation Forest to an Extended Isolation Forest + LSTM Autoencoder ensemble — and achieving an AUC-ROC of 0.959. I also built the Machine Learning Stock Picker, which used LSTM, Neural Network, and SVM models to predict which DJIA stocks would outperform the weekly median return. I've paired this hands-on modeling work with coursework in Quantitative Methods in Finance, Machine Learning for Finance, and Introduction to Financial Derivatives at NYU.
+A: My main financial modeling work spans two projects. The High Frequency Trading LOB Anomaly Detection project is an unsupervised market manipulation detector on 1.8M tick-level limit order book events, benchmarking 6 model families — from Isolation Forest to an Extended Isolation Forest + LSTM Autoencoder ensemble — and achieving an AUC-ROC of 0.959. The Equity Return-Prediction & Ranking System is a cross-sectional ranking model over the full S&P 500, combining Ridge, ElasticNet, and Random Forest regressors via IC-weighted ensembling and validating them with a leakage-free walk-forward backtest that achieved a 3.7 Sharpe ratio. I've paired this hands-on modeling work with coursework in Quantitative Methods in Finance, Machine Learning for Finance, and Introduction to Financial Derivatives at NYU.
 
 ---
 
@@ -95,7 +95,7 @@ A: LoRA (Low-Rank Adaptation) is an efficient technique for fine-tuning large la
 ---
 
 **Q19: What is your experience with cloud or DevOps tools?**
-A: I've worked with GitHub CI/CD pipelines for automated testing and deployment (used in the ML Stock Picker project), Apache Airflow for workflow orchestration, and I'm familiar with environment variable management and deployment on platforms like Vercel. I also have experience with PySpark for distributed data processing.
+A: I've worked with GitHub Actions CI/CD pipelines for automated model retraining (used in the Equity Return-Prediction & Ranking System to retrain and persist results daily), Apache Airflow for workflow orchestration, and I'm familiar with environment variable management and deployment on platforms like Vercel. I also have experience with PySpark for distributed data processing.
 
 ---
 
@@ -110,7 +110,7 @@ A: This was a full-stack software engineering project where I designed and built
 ---
 
 **Q22: Have you worked with time series data?**
-A: Yes, extensively. In the High Frequency Trading LOB Anomaly Detection project, I engineered 101 features across 10/50/200-tick rolling windows on 1.8M tick-level order book events and used a PyTorch LSTM Autoencoder to model sequential market microstructure patterns. In the ML Stock Picker, I used LSTM networks, which are specifically designed for sequential/time series data, to model stock price patterns.
+A: Yes, extensively. In the High Frequency Trading LOB Anomaly Detection project, I engineered 101 features across 10/50/200-tick rolling windows on 1.8M tick-level order book events and used a PyTorch LSTM Autoencoder to model sequential market microstructure patterns. In the Equity Return-Prediction & Ranking System, I built a leakage-free walk-forward backtest — a time-series-aware validation technique that only ever trains on past data and evaluates on future periods it hasn't seen, which avoids the lookahead bias that a standard random train/test split would introduce.
 
 ---
 
@@ -139,13 +139,13 @@ A: The Infrastructure Masons chatbot used Qwen 3.5 as the base LLM, fine-tuned w
 
 ---
 
-**Q28: Tell me about the Machine Learning Stock Picker project in detail.**
-A: The ML Stock Picker was an end-to-end machine learning system designed to identify DJIA stocks likely to outperform the weekly median cross-sectional return. I trained and tuned three model architectures — an LSTM (well-suited for sequential price data), a standard Neural Network, and an SVM — achieving 73% test accuracy on weekly directional predictions through hyperparameter tuning with Scikit-learn and PyTorch. I also built a fully automated ETL pipeline using Python, MySQL, and GitHub CI/CD that continuously ingests real-time equity price data, eliminating manual data collection. Additionally, I built a Streamlit dashboard to visualize live price data alongside 17 technical indicators including RSI, volatility, and various moving averages.
+**Q28: Tell me about the Equity Return-Prediction & Ranking System project in detail.**
+A: This was a continuous return-prediction and cross-sectional ranking model spanning the full S&P 500 constituents — instead of a binary classifier, it ranks every stock by predicted relative return each period. I benchmarked three regression approaches — Ridge, ElasticNet, and Random Forest — evaluating each with Spearman Information Coefficient and decile-spread analysis, then combined them through IC-weighted ensembling, which outperformed every individual model out-of-sample. I built an equal-weighted, long-only portfolio construction pipeline and a leakage-free walk-forward backtest, achieving a 3.7 Sharpe ratio and 63% cumulative return. The whole system is automated with a GitHub Actions CI/CD workflow that retrains the model and persists results daily, plus a Streamlit dashboard tracking Sharpe, Sortino, CAGR, and drawdown benchmarked against SPY.
 
 ---
 
-**Q29: What tech stack did you use for the Machine Learning Stock Picker?**
-A: The ML Stock Picker used Python, PyTorch, and Scikit-learn for model training (LSTM, Neural Network, SVM). The data pipeline used MySQL for storage and GitHub CI/CD for automated ingestion of real-time equity data. I built a Streamlit dashboard for visualization. The overall system was a fully automated ETL pipeline feeding into an ML prediction engine.
+**Q29: What tech stack did you use for the Equity Return-Prediction & Ranking System?**
+A: The system used Python and Scikit-learn for model training (Ridge, ElasticNet, Random Forest), evaluated with Spearman Information Coefficient and decile-spread analysis. The automation layer used GitHub Actions for daily CI/CD retraining, and I built a Streamlit dashboard to visualize Sharpe, Sortino, CAGR, and drawdown against SPY. The overall system was a walk-forward backtested, IC-weighted ensemble feeding into a long-only portfolio construction pipeline.
 
 ---
 
@@ -160,7 +160,7 @@ A: This was a research project focused on improving an open-source benchmark for
 ---
 
 **Q32: What projects have you built?**
-A: I've built five projects. (1) High Frequency Trading LOB Anomaly Detection — an unsupervised market manipulation detector on 1.8M limit order book events, achieving an AUC-ROC of 0.959 across a 6-model ensemble benchmark. (2) Infrastructure Masons Persona AI Chatbot — fine-tuned Qwen 3.5 with LoRA, built a RAG pipeline with Pinecone and Together AI, demoed at DCD Connect. (3) Machine Learning Stock Picker — LSTM, Neural Network, and SVM models achieving 73% accuracy, with an automated real-time ETL pipeline and Streamlit dashboard. (4) Criminal Records Database — normalized MySQL schema, PHP backend for concurrent multi-user access, HTML/CSS/JavaScript frontend. (5) AI for Scientific Research — improved a satellite image pixel classifier benchmark by 18% using TensorFlow.
+A: I've built five projects. (1) High Frequency Trading LOB Anomaly Detection — an unsupervised market manipulation detector on 1.8M limit order book events, achieving an AUC-ROC of 0.959 across a 6-model ensemble benchmark. (2) Infrastructure Masons Persona AI Chatbot — fine-tuned Qwen 3.5 with LoRA, built a RAG pipeline with Pinecone and Together AI, demoed at DCD Connect. (3) Equity Return-Prediction & Ranking System — Ridge, ElasticNet, and Random Forest regressors combined via IC-weighted ensembling over the full S&P 500, backtested to a 3.7 Sharpe ratio with daily automated retraining. (4) Criminal Records Database — normalized MySQL schema, PHP backend for concurrent multi-user access, HTML/CSS/JavaScript frontend. (5) AI for Scientific Research — improved a satellite image pixel classifier benchmark by 18% using TensorFlow.
 
 ---
 

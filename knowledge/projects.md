@@ -26,16 +26,16 @@ The project culminated in a live demo at DCD Connect in New York — a major dat
 
 ---
 
-## Machine Learning Stock Picker
-**May 2025 – Aug 2025 | Data Engineer | New York, NY**
+## Equity Return-Prediction & Ranking System
+**May 2025 – Aug 2025 | Quantitative Analyst | New York, NY**
 
-This project was an end-to-end machine learning system designed to identify DJIA stocks likely to outperform the weekly median cross-sectional return — essentially, a weekly stock-picking engine driven entirely by data and models.
+This project is a continuous return-prediction and cross-sectional ranking model spanning the full S&P 500 constituents. Rather than a binary "will this stock beat the market" classifier, it ranks every stock in the index by predicted relative return each period — a more information-rich signal for actually constructing a portfolio.
 
-I trained and optimized three different model architectures: an LSTM (Long Short-Term Memory network, well suited for sequential price data), a standard Neural Network, and an SVM (Support Vector Machine). Through hyperparameter tuning using Scikit-learn and PyTorch, the best model achieved a test accuracy of 73% on the weekly directional prediction task.
+I benchmarked three regression approaches — Ridge, ElasticNet, and Random Forest — evaluating each with Spearman Information Coefficient and decile-spread analysis, the standard tools for judging whether a ranking model actually separates future winners from losers rather than just fitting noise. I then combined the three models through IC-weighted ensembling, which outperformed every individual model out-of-sample.
 
-Beyond the modeling, I built a fully automated ETL pipeline using Python, MySQL, and GitHub CI/CD that continuously ingests real-time equity price data — so the system runs without manual data collection. I also built a Streamlit dashboard to visualize live price data alongside 17 technical indicators including RSI, volatility, and various moving averages.
+Beyond the modeling, I built an equal-weighted, long-only portfolio construction pipeline and a leakage-free walk-forward backtest — meaning the model only ever trains on past data and is evaluated on future periods it hasn't seen, avoiding lookahead bias. This backtest achieved a 3.7 Sharpe ratio and 63% cumulative return. I automated the full system with a GitHub Actions CI/CD workflow that retrains the model and persists results daily, and built a Streamlit dashboard tracking Sharpe, Sortino, CAGR, and drawdown benchmarked against SPY.
 
-**Tech Stack:** Python, PyTorch, Scikit-learn, LSTM, SVM, Neural Networks, MySQL, GitHub CI/CD, Streamlit, ETL pipeline
+**Tech Stack:** Python, Ridge Regression, ElasticNet, Random Forest, Scikit-learn, Spearman Information Coefficient, walk-forward backtesting, GitHub Actions CI/CD, Streamlit
 
 ---
 
